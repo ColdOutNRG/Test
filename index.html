@@ -103,6 +103,7 @@
   <script>
     document.getElementById('yesBtn').addEventListener('click', function() {
       document.getElementById('loveMessage').style.display = 'block';
+      document.getElementById('loveMessage').style.color = '#89cff0';
       document.getElementById('loveMessage').innerText = `Yay, you chose yes ; if not, then it should have done something.
 
 Anyways, I wanted to say happy Valentine's Day, and I hope you have a good day today.
@@ -145,7 +146,7 @@ I love you unconditionally, miss you intensely, and I'll always be here for you.
         confetti.classList.add('confetti');
         confetti.style.left = Math.random() * 100 + 'vw';
         confetti.style.top = '-10px';
-        confetti.style.backgroundColor = ["blue", "red", "white"][Math.floor(Math.random() * 3)];
+        confetti.style.backgroundColor = ["light", "lightred", "white"][Math.floor(Math.random() * 3)];
         confetti.style.animationDuration = (Math.random() * 2 + 1) + 's';
         container.appendChild(confetti);
         setTimeout(() => confetti.remove(), 3000);
