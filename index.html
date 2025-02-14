@@ -4,7 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valentine's Day</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            text-align: center;
+            background-color: pink;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .btn {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        #loveMessage {
+            display: none;
+            font-size: 24px;
+            color: red;
+            margin-top: 20px;
+        }
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: red;
+            clip-path: polygon(50% 0%, 100% 35%, 75% 100%, 50% 75%, 25% 100%, 0% 35%);
+            animation: float 5s infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -12,8 +54,32 @@
         <button class="btn" id="yesBtn">Yes</button>
         <button class="btn" id="noBtn">No</button>
         <p id="loveMessage">You are loved! 💕</p>
+        <img id="loveGif" src="" style="display: none; width: 300px; margin-top: 20px;" alt="Love GIF">
     </div>
     <div class="hearts"></div>
-    <script src="script.js"></script>
+    <script>
+        document.getElementById('yesBtn').addEventListener('click', function() {
+            document.getElementById('loveMessage').style.display = 'block';
+            document.getElementById('loveMessage').innerText = 'Yay! 💖 You made my day!';
+            let loveGif = document.getElementById('loveGif');
+            loveGif.src = 'https://media.giphy.com/media/l4FGuhL4U2WyjdkaY/giphy.gif'; // Example GIF URL
+            loveGif.style.display = 'block';
+        });
+        document.getElementById('noBtn').addEventListener('click', function() {
+            alert('Oh no! 😢 Maybe next time?');
+        });
+        function createHearts() {
+            const heartContainer = document.querySelector('.hearts');
+            for (let i = 0; i < 20; i++) {
+                let heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                heartContainer.appendChild(heart);
+                setTimeout(() => heart.remove(), 5000);
+            }
+        }
+        setInterval(createHearts, 1000);
+    </script>
 </body>
 </html>
