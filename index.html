@@ -12,6 +12,7 @@
         }
         .container {
             margin-top: 50px;
+            position: relative;
         }
         .btn {
             padding: 10px 20px;
@@ -20,6 +21,7 @@
             border: none;
             cursor: pointer;
             border-radius: 5px;
+            position: relative;
         }
         #yesBtn {
             background-color: lightgreen;
@@ -56,7 +58,7 @@
 </head>
 <body>
     <div class="container">
-        <h1 style="color:powderblue;">Will you be my Valentine today?</h1>
+        <h1 style="color: rosewood;">Will you be my Valentine today? 💖</h1>
         <button class="btn" id="yesBtn">Yes</button>
         <button class="btn" id="noBtn">No</button>
         <p id="loveMessage">You are loved! 💕</p>
@@ -68,11 +70,16 @@
             document.getElementById('loveMessage').style.display = 'block';
             document.getElementById('loveMessage').innerText = 'Yay! 💖 You made my day!';
             let loveGif = document.getElementById('loveGif');
-            loveGif.src = 'https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcWo3N3J0cncycnBpeHlmOHh3eDA4M2FsajQzZjByamU0N21udWl2ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/H5C8CevNMbpBqNqFjl/giphy.gif'; // Example GIF URL
+            loveGif.src = 'https://media.giphy.com/media/l4FGuhL4U2WyjdkaY/giphy.gif'; // Example GIF URL
             loveGif.style.display = 'block';
         });
         document.getElementById('noBtn').addEventListener('click', function() {
-            alert('Oh no! 😢 Maybe next time?');
+            let noBtn = document.getElementById('noBtn');
+            let newX = Math.random() * (window.innerWidth - noBtn.clientWidth);
+            let newY = Math.random() * (window.innerHeight - noBtn.clientHeight);
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = `${newX}px`;
+            noBtn.style.top = `${newY}px`;
         });
         function createHearts() {
             const heartContainer = document.querySelector('.hearts');
