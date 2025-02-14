@@ -7,7 +7,7 @@
     <style>
         body {
             text-align: center;
-            background-color: pink;
+            background-color: #e08e99;
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
@@ -57,11 +57,22 @@
         }
         .shape {
             position: absolute;
-            width: 100px;
-            height: 100px;
-            background: rgba(255, 182, 193, 0.5);
-            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            opacity: 0.6;
             animation: floatShapes 6s infinite alternate ease-in-out;
+        }
+        .heart {
+            background-color: #d8737f;
+            clip-path: polygon(50% 15%, 100% 40%, 80% 100%, 50% 80%, 20% 100%, 0% 40%);
+        }
+        .star {
+            background-color: #c85c68;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+        .diamond {
+            background-color: #b14b58;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
         }
         @keyframes floatShapes {
             0% { transform: translateY(0); }
@@ -94,9 +105,10 @@
         });
         function createShapes() {
             const shapeContainer = document.querySelector('.background-shapes');
+            const shapeTypes = ['heart', 'star', 'diamond'];
             for (let i = 0; i < 10; i++) {
                 let shape = document.createElement('div');
-                shape.classList.add('shape');
+                shape.classList.add('shape', shapeTypes[Math.floor(Math.random() * shapeTypes.length)]);
                 shape.style.left = Math.random() * 100 + 'vw';
                 shape.style.top = Math.random() * 100 + 'vh';
                 shape.style.animationDuration = (Math.random() * 3 + 3) + 's';
