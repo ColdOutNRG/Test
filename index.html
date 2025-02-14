@@ -7,7 +7,7 @@
     <style>
         body {
             text-align: center;
-            background-color: #f8c8d8;
+            background-color: pink;
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
@@ -57,45 +57,22 @@
         }
         .shape {
             position: absolute;
-            width: 80px;
-            height: 80px;
-            opacity: 0.6;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 182, 193, 0.5);
+            border-radius: 50%;
             animation: floatShapes 6s infinite alternate ease-in-out;
-        }
-        .heart {
-            background-color: #d8737f;
-            clip-path: polygon(50% 15%, 100% 40%, 80% 100%, 50% 80%, 20% 100%, 0% 40%);
-        }
-        .star {
-            background-color: #c85c68;
-            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-        }
-        .diamond {
-            background-color: #b14b58;
-            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
         }
         @keyframes floatShapes {
             0% { transform: translateY(0); }
             100% { transform: translateY(-30px); }
-        }
-        @keyframes confettiFall {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-        }
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: red;
-            opacity: 0.8;
-            animation: confettiFall 3s linear forwards;
         }
     </style>
 </head>
 <body>
     <div class="background-shapes"></div>
     <div class="container">
-        <h1 style="color: #b14b58;">Will you be my Valentine today? 💖</h1>
+        <h1 style="color: deepskyblue;">Will you be my Valentine today? 💖</h1>
         <button class="btn" id="yesBtn">Yes</button>
         <button class="btn" id="noBtn">No</button>
         <p id="loveMessage">You are loved! 💕</p>
@@ -103,26 +80,29 @@
     <script>
         document.getElementById('yesBtn').addEventListener('click', function() {
             document.getElementById('loveMessage').style.display = 'block';
-            document.getElementById('loveMessage').innerText = "Yay, you chose yes (hopefully on the first click); if not, then it should have done something. 
-            
-Anyways, I wanted to say happy Valentine's Day, and I hope you have a good day today. 
-
-I want to tell you how much I love you (PS, it’s a lot) and want you to know how proud of you I am. Thanks for sticking with me till now. I know how sometimes you don’t feel too good; you might get so stressed and lonely that you can be mean to me. I want to assure you that when that happens, I’ll keep trying for you, I’ll bear with you, and I won’t let you go ever. I’ll try everything to keep you from pushing me away, and it’ll be good again. I know you’re doing your best for us, and I will keep my promise to do that. It’ll be fine when we can be together again. You’ll do great. 
-
-I love you unconditionally, miss you intensely (I may become a bit too sad), and I'll always be here for you.";
-            document.getElementById('noBtn').style.display = 'none';
-            createConfetti();
+            document.getElementById('loveMessage').innerText = 'Yay! 💖 You made my day!';
         });
         document.getElementById('noBtn').addEventListener('click', function() {
             let noBtn = document.getElementById('noBtn');
             let maxX = window.innerWidth - noBtn.clientWidth - 20;
             let maxY = window.innerHeight - noBtn.clientHeight - 20;
-            let newX = Math.min(Math.max(10, Math.random() * maxX), maxX);
-            let newY = Math.min(Math.max(10, Math.random() * maxY), maxY);
+            let newX = Math.max(10, Math.random() * maxX);
+            let newY = Math.max(10, Math.random() * maxY);
             noBtn.style.position = 'absolute';
             noBtn.style.left = `${newX}px`;
             noBtn.style.top = `${newY}px`;
         });
+        function createShapes() {
+            const shapeContainer = document.querySelector('.background-shapes');
+            for (let i = 0; i < 10; i++) {
+                let shape = document.createElement('div');
+                shape.classList.add('shape');
+                shape.style.left = Math.random() * 100 + 'vw';
+                shape.style.top = Math.random() * 100 + 'vh';
+                shape.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                shapeContainer.appendChild(shape);
+            }
+        }
         createShapes();
     </script>
 </body>
