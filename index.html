@@ -103,7 +103,13 @@
     <script>
         document.getElementById('yesBtn').addEventListener('click', function() {
             document.getElementById('loveMessage').style.display = 'block';
-            document.getElementById('loveMessage').innerText = 'Yay! 💖 You made my day!';
+            document.getElementById('loveMessage').innerText = "Yay, you chose yes (hopefully on the first click); if not, then it should have done something. 
+            
+Anyways, I wanted to say happy Valentine's Day, and I hope you have a good day today. 
+
+I want to tell you how much I love you (PS, it’s a lot) and want you to know how proud of you I am. Thanks for sticking with me till now. I know how sometimes you don’t feel too good; you might get so stressed and lonely that you can be mean to me. I want to assure you that when that happens, I’ll keep trying for you, I’ll bear with you, and I won’t let you go ever. I’ll try everything to keep you from pushing me away, and it’ll be good again. I know you’re doing your best for us, and I will keep my promise to do that. It’ll be fine when we can be together again. You’ll do great. 
+
+I love you unconditionally, miss you intensely (I may become a bit too sad), and I'll always be here for you.";
             document.getElementById('noBtn').style.display = 'none';
             createConfetti();
         });
@@ -117,31 +123,6 @@
             noBtn.style.left = `${newX}px`;
             noBtn.style.top = `${newY}px`;
         });
-        function createShapes() {
-            const shapeContainer = document.querySelector('.background-shapes');
-            const shapeTypes = ['heart', 'star', 'diamond'];
-            for (let i = 0; i < 10; i++) {
-                let shape = document.createElement('div');
-                shape.classList.add('shape', shapeTypes[Math.floor(Math.random() * shapeTypes.length)]);
-                shape.style.left = Math.random() * 100 + 'vw';
-                shape.style.top = Math.random() * 100 + 'vh';
-                shape.style.animationDuration = (Math.random() * 3 + 3) + 's';
-                shapeContainer.appendChild(shape);
-            }
-        }
-        function createConfetti() {
-            const container = document.body;
-            for (let i = 0; i < 50; i++) {
-                let confetti = document.createElement('div');
-                confetti.classList.add('confetti');
-                confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.top = '-10px';
-                confetti.style.backgroundColor = ["red", "pink", "white"][Math.floor(Math.random() * 3)];
-                confetti.style.animationDuration = (Math.random() * 2 + 1) + 's';
-                container.appendChild(confetti);
-                setTimeout(() => confetti.remove(), 3000);
-            }
-        }
         createShapes();
     </script>
 </body>
