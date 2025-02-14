@@ -7,7 +7,7 @@
     <style>
         body {
             text-align: center;
-            background-color: pink;
+            background-color: #FFD1DC;
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
@@ -59,8 +59,8 @@
             position: absolute;
             width: 100px;
             height: 100px;
-            background: rgba(255, 182, 193, 0.5);
-            border-radius: 50%;
+            background: rgba(255, 105, 180, 0.5);
+            clip-path: polygon(50% 0%, 100% 35%, 85% 100%, 50% 75%, 15% 100%, 0% 35%);
             animation: floatShapes 6s infinite alternate ease-in-out;
         }
         @keyframes floatShapes {
@@ -71,7 +71,7 @@
             position: absolute;
             width: 10px;
             height: 10px;
-            background-color: red;
+            background-color: lightblue;
             opacity: 0.7;
             transform: rotate(45deg);
             animation: fall 2s linear infinite;
@@ -80,12 +80,12 @@
             position: absolute;
             width: 20px;
             height: 20px;
-            background-color: pink;
+            background-color: palevioletred;
             clip-path: polygon(50% 0%, 100% 35%, 85% 100%, 50% 75%, 15% 100%, 0% 35%);
             animation: floatUp 3s ease-in-out infinite;
         }
         @keyframes fall {
-            0% { transform: translateY(0) rotate(45deg); }
+            0% { transform: translateY(-100vh) rotate(45deg); }
             100% { transform: translateY(100vh) rotate(45deg); }
         }
         @keyframes floatUp {
@@ -97,7 +97,7 @@
 <body>
     <div class="background-shapes"></div>
     <div class="container">
-        <h1 style="color: deepskyblue;">Will you be my Valentine today? 💖</h1>
+        <h1 style="color: mediumvioletred;">Will you be my Valentine today? 💖</h1>
         <button class="btn" id="yesBtn">Yes</button>
         <button class="btn" id="noBtn">No</button>
         <p id="loveMessage">You are loved! 💕</p>
