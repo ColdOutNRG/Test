@@ -126,8 +126,8 @@ I love you unconditionally, miss you intensely, and I'll always be here for you.
 
     document.getElementById('noBtn').addEventListener('click', function() {
       let noBtn = document.getElementById('noBtn');
-      let maxX = window.innerWidth - noBtn.clientWidth - 0.7;
-      let maxY = window.innerHeight - noBtn.clientHeight - 0.8;
+      let maxX = window.innerWidth - noBtn.clientWidth - 0.1;
+      let maxY = window.innerHeight - noBtn.clientHeight - 0.1;
       let newX = Math.min(Math.max(10, Math.random() * maxX), maxX);
       let newY = Math.min(Math.max(10, Math.random() * maxY), maxY);
       noBtn.style.position = 'absolute';
